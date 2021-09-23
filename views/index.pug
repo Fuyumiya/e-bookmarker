@@ -3,3 +3,26 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  div
+    if user
+      div
+        a(href="/logout") #{user.username} をログアウト
+      div
+        a(href="/books/new") しおりを作成する
+      - var hasBookmarker = books.length > 0
+      if hasBookmarker
+        h3 あなたの作ったしおり一覧
+        table.table
+          tr
+            th タイトル
+            th ページ数
+            th 更新日時
+          each book in books
+            tr
+              td
+                a(href=`/books/${book.bookName}`) #{book.bookName}
+              td #{book.pageCount}
+              td #{book.updatedAt}
+    else
+      div
+        a(href="/login") ログイン

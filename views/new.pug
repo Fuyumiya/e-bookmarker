@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  form(method="post", action="/books")
+    div
+      h5 本のタイトル
+      input(type="text" name="bookName")
+    div
+      h5 ページ数
+      input(type="number" name="pageCount")
+    div
+      h5 メモ
+      textarea(name="memo")
+    button(type="submit") しおりを作成する
